@@ -1,0 +1,36 @@
+
+version: 2
+
+models:
+  - name: my_first_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: my_second_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+          
+  - name: raw_movie_titles
+    columns:
+      - name: release_year
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1925
+              max_value: 2022
+      - name: type
+        tests:
+          - accepted_values:
+              values: ['Movie']
+      - name: show_id
+        tests:
+          - is_id_valid

@@ -1,0 +1,14 @@
+dbt_playground_bigquery:
+  outputs:
+    dev:
+      dataset: dbt_playground
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: creds/dbt_bigquery_project.json
+      location: US
+      method: service-account
+      priority: interactive
+      project: data-stack-398710
+      threads: 1
+      type: bigquery
+  target: dev

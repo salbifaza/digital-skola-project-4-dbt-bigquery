@@ -1,0 +1,6 @@
+version: 2
+
+sources:
+  - name: dbt_playground
+    tables:
+      - name: raw_netflix_titles
